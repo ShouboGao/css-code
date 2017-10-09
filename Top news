@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #wrap{
+            position: relative;
+            margin-top: 100px;
+            margin-left: 100px;
+
+            width: 290px;
+            height: 175px;
+
+            /*background: pink;*/
+        }
+        #header{
+            position: relative;
+            height: 29px;
+            border-bottom:1px solid #ececec ;
+        }
+        #tab_daily{
+            position: absolute;
+            top:0;
+            right:47px ;
+            /*float: right;*/
+            width: 46px;
+            height: 28px;
+            line-height: 28px;
+            font-size: 12px;
+            text-align: center;
+            border: 1px solid #ececec  ;
+
+            border-bottom: 1px solid white;
+        }
+        #tab_week{
+            position: absolute;
+            top:0;
+            right: 0;
+            /*float: right;*/
+            width: 46px;
+            height: 28px;
+            line-height: 28px;
+            font-size: 12px;
+            text-align: center;
+            border: 1px solid #ececec  ;
+        }
+        .list{
+            list-style: none;
+        }
+        .list li{
+            height: 29px;
+            line-height: 29px;
+        }
+        .list li a{
+            text-decoration: none;
+        }
+        .title{
+            font-size: 14px;
+            color: #222;
+        }
+        .author{
+            float: right;
+            font-size: 12px;
+            color: #bbbbbb;
+        }
+        .list li i{
+            display: inline-block;
+            vertical-align: middle;
+            width: 17px;
+            height: 17px;
+
+            /*background-color: green;*/
+            background-image: url("img/icon-nums.png");
+            background-repeat: no-repeat;
+        }
+        .icon2{
+            background-position: 0 -18px;
+        }
+        .icon3{
+            background-position: 0 -36px;
+        }
+        .icon4{
+            background-position: 0 -54px;
+        }
+        .icon5{
+            background-position: 0 -72px;
+        }
+        #daily_content,#week_content{
+            width: 290px;
+            position: absolute;
+            top:30px;
+            left: 0;
+        }
+        #week_content{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="header">
+            <div id="tab_daily">日榜</div>
+            <div id="tab_week">周榜</div>
+        </div>
+        <div id="daily_content">
+            <ul class="list">
+                <li>
+                    <i></i>
+                    <a href="###" class="title">标题1</a>
+                    <a href="###" class="author">作者1</a>
+                </li>
+                <li>
+                    <i class="icon2"></i>
+                    <a href="###" class="title">标题1</a>
+                    <a href="###" class="author">作者1</a>
+                </li>
+                <li>
+                    <i class="icon3"></i>
+                    <a href="###" class="title">标题1</a>
+                    <a href="###" class="author">作者1</a>
+                </li>
+                <li>
+                    <i class="icon4"></i>
+                    <a href="###" class="title">标题1</a>
+                    <a href="###" class="author">作者1</a>
+                </li>
+                <li>
+                    <i class="icon5"></i>
+                    <a href="###" class="title">标题1</a>
+                    <a href="###" class="author">作者1</a>
+                </li>
+            </ul>
+        </div>
+        <!-- ctrl + f 查找与替换-->
+        <div id="week_content">
+            <ul class="list">
+                <li>
+                    <i></i>
+                    <a href="###" class="title">标题2</a>
+                    <a href="###" class="author">作者2</a>
+                </li>
+                <li>
+                    <i class="icon2"></i>
+                    <a href="###" class="title">标题2</a>
+                    <a href="###" class="author">作者2</a>
+                </li>
+                <li>
+                    <i class="icon3"></i>
+                    <a href="###" class="title">标题2</a>
+                    <a href="###" class="author">作者2</a>
+                </li>
+                <li>
+                    <i class="icon4"></i>
+                    <a href="###" class="title">标题2</a>
+                    <a href="###" class="author">作者2</a>
+                </li>
+                <li>
+                    <i class="icon5"></i>
+                    <a href="###" class="title">标题2</a>
+                    <a href="###" class="author">作者2</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+<!--
+    高度塌陷：
+        浮动： --- bfc ,伪元素
+
+        绝对定位： --- 父元素设置高度
+
+    脱离文档流元素：
+        宽度和高度由内容撑开 --- 给自身设置高度和宽度
+-->
+</body>
+<script type="text/javascript">
+    var header = document.getElementById('header');
+    var tabDaily = document.getElementById('tab_daily');
+    var tabWeek = document.getElementById('tab_week');
+    var dailyContent = document.getElementById('daily_content');
+    var weekContent = document.getElementById('week_content');
+
+    header.onmouseover = function (event) {
+        event = event || window.event;
+
+        var targetDom = event.target;
+        if(targetDom == tabDaily){
+            tabDaily.style.color = 'rgb(51,51,51)';
+            tabDaily.style.borderBottom = '1px solid white';
+            dailyContent.style.display = 'block';
+
+            tabWeek.style.color = 'rgb(153,153,153)';
+            tabWeek.style.borderBottom = '1px solid  rgb(236, 236, 236)';
+            weekContent.style.display = 'none';
+
+        };
+        if(targetDom == tabWeek){
+            tabWeek.style.color = 'rgb(51,51,51)';
+            tabWeek.style.borderBottom = '1px solid white';
+            weekContent.style.display = 'block';
+
+            tabDaily.style.color = 'rgb(153,153,153)';
+            tabDaily.style.borderBottom = '1px solid  rgb(236, 236, 236)';
+            dailyContent.style.display = 'none';
+
+        };
+
+    };
+
+</script>
+
+</html>
